@@ -1,2 +1,2 @@
-# NSPAnalytics
-Nonpoint Source Pollution Analytics
+# ANSPAnalytics
+Agricultural Nonpoint Source Pollution Analytics
