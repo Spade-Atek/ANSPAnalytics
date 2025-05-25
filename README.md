@@ -2,9 +2,9 @@
 # 农业面源污染分析软件 V1.0（湖北专版）
 ## 一、成员及项目分工
 - 谢育泰：项目整体架构协调；api对接；pr审核；编写前段功能页面：清单分析、重心分析、迁移分析功能页面
-- 宓小童[https://github.com/mxttt173]：后端，软件测试bug反馈
+- 宓小童 [https://github.com/mxttt173]：后端，软件测试bug反馈
 - 剡丽娟：前端
-- 庞宇琦[https://github.com/Pyq-bit]：前端核心页面：主页、导航、错误页面引导；软件测试bug反馈
+- 庞宇琦 [https://github.com/Pyq-bit]：前端核心页面：主页、导航、错误页面引导；软件测试bug反馈
   
 ## 二、项目架构（基于前后端分离开发）
 - 前端：使用 Flutter (Dart) 构建Windows平台应用
