@@ -1,8 +1,3 @@
-# encoding: utf-8
-# @File  : szc.py
-# @Author: XIE Yutai
-# @Date  : 2025/05/16/16:30
-
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
