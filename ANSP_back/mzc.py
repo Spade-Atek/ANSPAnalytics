@@ -1,8 +1,3 @@
-# encoding: utf-8
-# @File  : mzc.py
-# @Author: XIE Yutai
-# @Date  : 2025/05/16/16:41
-
 import os
 import re
 import numpy as np
