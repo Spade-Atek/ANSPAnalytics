@@ -326,8 +326,9 @@ class _MultiInputOutputPageState extends State<MultiInputOutputPage> {
                 ),
                 SizedBox(width: 20),
                 ElevatedButton(
-                  onPressed: _buttonEnabled1 ? () {
-                    _uploadExcel();
+                  onPressed: _buttonEnabled1 ? () async {
+                    await _uploadExcel();
+                    await Future.delayed(Duration(seconds: 2)); //等待上传结束
                     _presentExcelData();
                   } : null,
                   style: ElevatedButton.styleFrom(
