@@ -63,11 +63,11 @@ quarto preview "c:/Users/农业面源污染分析软件_V1.0_湖北专版.md" --
 
 
 ### 📡 服务端运行方式
-> ✅ 服务端也提供了直接运行的[*Releases*](https://github.com/Spade-Atek/ANSPAnalytics/releases)版本。基于pyinstaller进行打包，但是打包版本存在一个路径问题，下载结果功能无法实现。
+> ✅ 服务端虽然也提供了直接运行的[*Releases*](https://github.com/Spade-Atek/ANSPAnalytics/releases)版本。基于pyinstaller进行打包，但是打包版本存在一个路径问题，下载结果功能无法实现（打包后自己电脑是相对路径可以运行，但是到其他同学的电脑测试是绝对路径导致的错误߹ᯅ߹ ，测试了几天暂时无法解决）。
 
-若想体验完整功能，建议采用手动编译/部署的方式。
-1. 下载仓库中的 `ANSP_back` 文件夹
-2. 使用 Conda 创建并激活虚拟环境（确保已安装 Flask）
+因此想体验完整功能，建议采用手动部署的方式部署后端，以实现下载服务。
+1. 下载仓库中的 `ANSP_back` 文件夹（包含templates文件夹，app.py和requirements.txt）
+2. 可根据文件 requirements.txt(包含项目依赖项)创建虚拟环境
 3. 以 `app.py` 为启动入口运行后端服务：
    ```
    python app.py
