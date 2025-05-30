@@ -136,6 +136,7 @@ void _login() {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
+        
         child: Column(
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
@@ -153,14 +154,14 @@ void _login() {
           mainAxisAlignment: MainAxisAlignment.center,
           
           children: <Widget>[
-            Text('农业面源污染分析软件 V1.0',
+            Text('农业面源污染分析软件（湖北专版)',
             style: TextStyle(
               fontSize: 55,
               fontWeight: FontWeight.bold, // 设置字体为粗体
               color: Colors.green, // 设置字体颜色为黑色
               fontFamily: "楷体",
             ),),
-            Text('(湖北专版)',
+            Text('(数据驱动课程项目-第25组)',
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold, // 设置字体为粗体

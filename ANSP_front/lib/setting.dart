@@ -116,9 +116,9 @@ class _SettingsPageState extends State<SettingsPage> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text('版本: 1.0.0', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              Text('版本: 1.0', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
               const SizedBox(height: 1),
-              Text('Copyright(C) 2025. All Rights Reserved', style: TextStyle(fontWeight: FontWeight.w800)),
+              Text('Copyright(C) 2025. 数据驱动课第25组 All Rights Reserved', style: TextStyle(fontWeight: FontWeight.w800)),
               const SizedBox(height: 30),
               Center( // 使用 Center 组件来居中显示特定的 Text
                 child: 

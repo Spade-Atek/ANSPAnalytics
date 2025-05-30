@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:dio/dio.dart';
 import 'navigation_drawer.dart' as my_drawer2;
+import 'dart:async';
 
 // 创建一个用来存储输出信息的类
 class ExcelData {
@@ -52,6 +53,7 @@ class _MultiInputOutputPageState extends State<MultiInputOutputPage> {
   bool isLoading = false; // 控制加载状态
   bool isRemind1 = false;
   OverlayEntry? _overlayEntry; // 用于管理 Overlay
+  Timer? _timeoutTimer;
   List<dynamic>? _excelData;
 
   Future<void> _pickExcel() async {
@@ -85,7 +87,7 @@ class _MultiInputOutputPageState extends State<MultiInputOutputPage> {
 
   //处理按钮方法
   Future<void> _uploadExcel() async {
-    showLoading(); //表示正在处理数据
+    showLoading(5); //表示正在处理数据
     final stopwatch = Stopwatch()..start();
 
     if (_selectedFile == null) {
@@ -154,6 +156,7 @@ class _MultiInputOutputPageState extends State<MultiInputOutputPage> {
       _filename = 'output.xlsx';
     });
     var dio_res = Dio();
+    await Future.delayed(Duration(seconds: 2));
     try{
       var response = await dio_res.get(
         'http://127.0.0.1:5000/get_result/$_filename',
@@ -213,9 +216,10 @@ class _MultiInputOutputPageState extends State<MultiInputOutputPage> {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: $e'),duration: Duration(seconds: 2)));
     }
   }
+  
 
     // 显示加载状态
-  void showLoading() {
+  void showLoading(timeoutInSeconds) {
     setState(() {
       isLoading = true;
     });
@@ -240,6 +244,12 @@ class _MultiInputOutputPageState extends State<MultiInputOutputPage> {
       },
     );
     Overlay.of(context).insert(_overlayEntry!); // 插入 Overlay
+      _timeoutTimer = Timer(Duration(seconds: timeoutInSeconds), () {
+      hideLoading(); // 超时后隐藏加载提示
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('处理时间过长，已取消加载'),backgroundColor: Colors.redAccent),
+      );
+    });
   }
 
   // 隐藏加载状态
@@ -247,6 +257,7 @@ class _MultiInputOutputPageState extends State<MultiInputOutputPage> {
     setState(() {
       isLoading = false;
     });
+    _timeoutTimer?.cancel();
     _overlayEntry?.remove(); // 移除 Overlay
     _overlayEntry = null;
   }
@@ -290,7 +301,8 @@ class _MultiInputOutputPageState extends State<MultiInputOutputPage> {
         title: Text('清单分析计算',style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),),
       ),
       drawer: my_drawer2.NavigationDrawer(),
-      body: Column(
+      body: 
+        Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           // 第一部分：提示文本
@@ -326,9 +338,8 @@ class _MultiInputOutputPageState extends State<MultiInputOutputPage> {
                 ),
                 SizedBox(width: 20),
                 ElevatedButton(
-                  onPressed: _buttonEnabled1 ? () async {
-                    await _uploadExcel();
-                    await Future.delayed(Duration(seconds: 2)); //等待上传结束
+                  onPressed: _buttonEnabled1 ? ()  {
+                    _uploadExcel();
                     _presentExcelData();
                   } : null,
                   style: ElevatedButton.styleFrom(
@@ -352,6 +363,10 @@ class _MultiInputOutputPageState extends State<MultiInputOutputPage> {
                 ),
                 SizedBox(width: 20),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,// 设置按钮的背景颜色
+                    foregroundColor: Colors.white, // 设置按钮文本颜色
+                    ),
                     onPressed: () {
                       // 调用显示地图弹窗的方法
                       showMapDialog(context);
@@ -364,10 +379,10 @@ class _MultiInputOutputPageState extends State<MultiInputOutputPage> {
           // 第三部分：Excel 数据显示
           Expanded(
             child: Container(
-              width: 1200, // 设置最大宽度
+              width: 1300, // 设置最大宽度
               height: 450, // 设置最大高度
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.blue), // 添加边框
+                border: Border.all(color: Colors.lightGreen), // 添加边框
               ),
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
@@ -377,7 +392,7 @@ class _MultiInputOutputPageState extends State<MultiInputOutputPage> {
                     DataColumn(label: Text('农用化肥中含氮量(吨-t)', style: TextStyle(fontWeight: FontWeight.bold))),
                     DataColumn(label: Text('农药施用量(吨-t)', style: TextStyle(fontWeight: FontWeight.bold))),
                     DataColumn(label: Text('耕地面积(公顷-hm²)', style: TextStyle(fontWeight: FontWeight.bold))),
-                    DataColumn(label: Text('耕地面源污染强度(t/hm²)', style: TextStyle(fontWeight: FontWeight.bold))),
+                    DataColumn(label: Text('耕地面源污染强度(t/hm²)', style: TextStyle(fontWeight: FontWeight.bold,color: Colors.blue))),
                   ],
                   rows: dataList?.map((data) => DataRow(
                     cells: [

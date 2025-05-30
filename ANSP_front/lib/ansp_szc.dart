@@ -5,7 +5,8 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:dio/dio.dart';
 import 'navigation_drawer.dart' as my_drawer1;
-import 'package:flutter/services.dart'; //'dart:typed_data'; 剪贴板服务
+import 'package:flutter/services.dart';
+import 'dart:async';
 
 
 class InputOutputPage extends StatefulWidget {
@@ -24,9 +25,10 @@ class _InputOutputPageState extends State<InputOutputPage> {
   Map<String, dynamic>? jsonData;
   bool isLoading = true; // 用于显示加载状态
   OverlayEntry? _overlayEntry; // 用于管理 Overlay
+  Timer? _timeoutTimer;
   bool isRemind1 = false;
   bool isRemind2 = false;
-
+  
   Future<void> _pickExcel() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
@@ -57,7 +59,7 @@ class _InputOutputPageState extends State<InputOutputPage> {
   }
 
   Future<void> _uploadExcel() async {
-    showLoading(); //表示正在处理数据
+    showLoading(5); //表示正在处理数据
     final stopwatch = Stopwatch()..start();
 
     if (_selectedFile == null) {
@@ -103,6 +105,7 @@ class _InputOutputPageState extends State<InputOutputPage> {
         }else{
           hideLoading(); //大于就不用管
         }
+        Future.delayed(Duration(seconds: 2));
         _getResult();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('处理成功，可通过[结果下载]获取相应处理结果'),backgroundColor: Colors.green,),
@@ -120,7 +123,7 @@ class _InputOutputPageState extends State<InputOutputPage> {
     }
   }
       // 显示加载状态
-  void showLoading() {
+  void showLoading(timeoutInSeconds) {
     setState(() {
       isLoading = true;
     });
@@ -144,7 +147,13 @@ class _InputOutputPageState extends State<InputOutputPage> {
         );
       },
     );
-    Overlay.of(context).insert(_overlayEntry!); // 插入 Overlay
+      Overlay.of(context).insert(_overlayEntry!); // 插入 Overlay
+      _timeoutTimer = Timer(Duration(seconds: timeoutInSeconds), () {
+      hideLoading(); // 超时后隐藏加载提示
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('处理时间过长，已取消加载'),backgroundColor: Colors.redAccent),
+      );
+    });
   }
 
   // 隐藏加载状态
@@ -152,6 +161,7 @@ class _InputOutputPageState extends State<InputOutputPage> {
     setState(() {
       isLoading = false;
     });
+    _timeoutTimer?.cancel();
     _overlayEntry?.remove(); // 移除 Overlay
     _overlayEntry = null;
   }
@@ -252,7 +262,7 @@ class _InputOutputPageState extends State<InputOutputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('重心迁移计算',style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
+        title: Text('重心分析计算',style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
       ),
       drawer: my_drawer1.NavigationDrawer(),
         body: Column(
@@ -315,6 +325,10 @@ class _InputOutputPageState extends State<InputOutputPage> {
                   ),
                   SizedBox(width: 20),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,// 设置按钮的背景颜色
+                      foregroundColor: Colors.white, // 设置按钮文本颜色
+                    ),
                     onPressed: () {
                       // 调用显示地图弹窗的方法
                       showMapDialog(context);

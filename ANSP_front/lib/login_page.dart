@@ -62,7 +62,12 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: LoginStyle.backgroundDecoration,
+        decoration: BoxDecoration(
+            // 使用渐变背景，文字背景可以通过图片或其他方式实现
+            gradient: LinearGradient(
+              colors: [Colors.greenAccent, Colors.lightGreen],
+            ),
+          ),
         child: Center(
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: 440,maxHeight: 500),
@@ -78,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(Icons.verified_user, size: 50, color: Colors.black),
+                      Icon(Icons.verified_user, size: 50, color: Colors.green),
                       SizedBox(height: 24),
                       TextFormField(
                         controller: _usernameController,
@@ -128,6 +133,14 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
+                      SizedBox(height: 16),
+                      Text(
+                        '测试账户(用户名：admin，密码：123)', // 固定文本提示
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey,
+                      ),
+                    ),
                     ],
                   ),
                 ),
@@ -136,7 +149,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton( 
         onPressed: _back2main,
         tooltip: '返回',
         backgroundColor: Colors.white,
