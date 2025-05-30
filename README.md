@@ -62,9 +62,9 @@ quarto preview "c:/Users/农业面源污染分析软件_V1.0_湖北专版.md" --
 3. 在最新版本的 Release 页面中下载 `ANSPools.exe` 可执行文件
 4. 下载后直接双击运行即可启动客户端程序
 
-
+---
 ### 📡 服务端运行方式
-> ✅ 服务端虽然也提供了直接运行的[*Releases*](https://github.com/Spade-Atek/ANSPAnalytics/releases)版本。基于pyinstaller进行打包，但是打包版本存在一个路径问题，下载结果功能无法实现（打包后自己电脑是相对路径可以运行，但是到其他同学的电脑测试是绝对路径导致的错误߹ᯅ߹ ，测试了几天暂时无法解决，但是如果不基于exe可执行文件运行提供的服务，其实所有功能都是可用的）。
+> ✅ 服务端虽然也提供了直接运行的[*app.exe*](https://github.com/Spade-Atek/ANSPAnalytics/releases)版本。基于pyinstaller进行打包，但是打包版本存在一个路径问题，下载结果功能无法实现（打包后自己电脑是相对路径可以运行，但是到其他同学的电脑测试是绝对路径导致的错误߹ᯅ߹ ，测试了几天暂时无法解决，但是如果不基于exe可执行文件运行提供的服务，其实所有功能都是可用的）。
 
 因此想体验完整功能，建议采用手动部署的方式部署后端，以实现下载服务。
 1. 下载仓库中的[`ANSP_back`](https://github.com/Spade-Atek/ANSPAnalytics/tree/main/ANSP_back) 文件夹（包含templates文件夹，app.py和requirements.txt）
@@ -74,7 +74,7 @@ quarto preview "c:/Users/农业面源污染分析软件_V1.0_湖北专版.md" --
    python app.py
    ```
 4. 默认服务运行地址为：`http://127.0.0.1:5000/`
-
+---
 ### 🌐 [*Releases*](https://github.com/Spade-Atek/ANSPAnalytics/releases)页面示意图
 
 ![image](https://github.com/user-attachments/assets/ceabaaeb-4c9a-486a-b201-34220f4f75b4)
