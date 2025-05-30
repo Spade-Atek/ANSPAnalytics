@@ -38,7 +38,7 @@
 ├── 示例数据.zip                   # 测试数据
 ├── ANSP_API.md                    # API 文档
 ├── LICENSE                        # 许可证
-├── README.md                      # 项目说明文档
+├── README.md                      # 软件说明文档
 ├── package.json                   # 项目配置文件
 └── 湖北省农业面源污染分析软件说明文档.pdf  # 软件说明文档，基于quarto生成
 ```
@@ -50,7 +50,8 @@
 ```bash
 quarto preview "c:/Users/农业面源污染分析软件_V1.0_湖北专版.md" --to typst --no-browser --no-watch-inputs
 ```
-* **接口文档**：🔗接口文档基于md格式
+* **API文档**：[*🔗接口文档*](https://github.com/Spade-Atek/ANSPAnalytics/blob/main/ANSP_API.md)为md格式
+* **示例数据.zip**：[*提供测试数据*](https://github.com/Spade-Atek/ANSPAnalytics/blob/main/%E7%A4%BA%E4%BE%8B%E6%95%B0%E6%8D%AE.zip)
 
 ## 三、软件使用说明
 
@@ -63,7 +64,7 @@ quarto preview "c:/Users/农业面源污染分析软件_V1.0_湖北专版.md" --
 
 
 ### 📡 服务端运行方式
-> ✅ 服务端虽然也提供了直接运行的[*Releases*](https://github.com/Spade-Atek/ANSPAnalytics/releases)版本。基于pyinstaller进行打包，但是打包版本存在一个路径问题，下载结果功能无法实现（打包后自己电脑是相对路径可以运行，但是到其他同学的电脑测试是绝对路径导致的错误߹ᯅ߹ ，测试了几天暂时无法解决）。
+> ✅ 服务端虽然也提供了直接运行的[*Releases*](https://github.com/Spade-Atek/ANSPAnalytics/releases)版本。基于pyinstaller进行打包，但是打包版本存在一个路径问题，下载结果功能无法实现（打包后自己电脑是相对路径可以运行，但是到其他同学的电脑测试是绝对路径导致的错误߹ᯅ߹ ，测试了几天暂时无法解决，但是如果不基于exe可执行文件运行提供的服务，其实所有功能都是可用的）。
 
 因此想体验完整功能，建议采用手动部署的方式部署后端，以实现下载服务。
 1. 下载仓库中的 `ANSP_back` 文件夹（包含templates文件夹，app.py和requirements.txt）
@@ -80,7 +81,7 @@ quarto preview "c:/Users/农业面源污染分析软件_V1.0_湖北专版.md" --
 
 ## 四、提供 EXCEL 示例测试数据
 
-* 提供 [示例数据](https://github.com/Spade-Atek/ANSPAnalytics/blob/main/%E7%A4%BA%E4%BE%8B%E6%95%B0%E6%8D%AE.zip)，示例数据也在仓库中的 `Data_test` 文件夹获取样例。
+* 提供 [示例数据](https://github.com/Spade-Atek/ANSPAnalytics/blob/main/%E7%A4%BA%E4%BE%8B%E6%95%B0%E6%8D%AE.zip)，示例数据也在仓库目录下找到 `示例数据.zip` 。
 * 如需使用自定义年鉴数据，请严格遵守以下 Excel 表格字段注释规范：
 
 | 字段名         | 含义说明                     |
