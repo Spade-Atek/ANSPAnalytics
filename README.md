@@ -10,25 +10,25 @@
 
 ### 项目成员与分工：
 - [🧑‍💻2024303120163 组长](https://github.com/Spade-Atek)  
-  1. 项目整体架构协调；  
-  2. 前后端 API 接口对接；  
-  3. 编写前端功能页面：清单分析、重心分析、迁移分析功能页面，辅助后端；  
-  4. PR 审核，项目打包。  
+1. 项目整体架构协调；  
+2. 前后端 API 接口对接；  
+3. 编写前端功能页面：清单分析、重心分析、迁移分析功能页面，辅助后端；  
+4. PR 审核，项目打包。  
 
 - [🧑‍⚖️2024303120152](https://github.com/mxttt173)  
-  1. 数据收集和整理；  
-  2. 后端代码编写：基于农业面源污染的相关参考文献和年鉴指标数据实现了清单计算、重心分析、迁移分析功能；  
-  3. 软件说明文档编写。  
+1. 数据收集和整理；  
+2. 后端代码编写：基于农业面源污染的相关参考文献和年鉴指标数据实现了清单计算、重心分析、迁移分析功能；  
+3. 软件说明文档编写。  
 
 - [👩‍💼2024303120076](https://github.com/Pyq-bit)  
-  1. 前端页面编写：主页、导航、设置页面；  
-  2. 接口文档编写；  
-  3. 软件测试 bug 反馈。  
+1. 前端页面编写：主页、导航、设置页面；  
+2. 接口文档编写；  
+3. 软件测试 bug 反馈。  
 
 - [🙋‍♀️2024303120149](https://github.com/Ylj0617)  
-  1. 前端页面编写：登录、错误页面引导；  
-  2. 软件风格、色彩统一、素材提供；  
-  3. 软件测试 bug 反馈。  
+1. 前端页面编写：登录、错误页面引导；  
+2. 软件风格、色彩统一、素材提供；  
+3. 软件测试 bug 反馈。  
 
 ## 二、项目架构
 ```bash
@@ -46,12 +46,12 @@
 * **后端**：使用 Flask 框架 (Python) 搭建服务端，RESTful 风格 API 提供数据支持
 * **通信方式**：前端基于 dio 库进行网络请求，实现前后端数据交互
 * **虚拟环境**：Conda管理环境，pip安装包
-* **软件说明文档**：[*软件说明文档*](https://github.com/Spade-Atek/ANSPAnalytics/blob/main/%E6%B9%96%E5%8C%97%E7%9C%81%E5%86%9C%E4%B8%9A%E9%9D%A2%E6%BA%90%E6%B1%A1%E6%9F%93%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3.pdf)基于[*quarto*](https://quarto.org/)生成
+* **软件说明文档**：[软件说明文档](https://github.com/Spade-Atek/ANSPAnalytics/blob/main/%E6%B9%96%E5%8C%97%E7%9C%81%E5%86%9C%E4%B8%9A%E9%9D%A2%E6%BA%90%E6%B1%A1%E6%9F%93%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3.pdf)基于[*quarto*](https://quarto.org/)生成
 ```bash
 quarto preview "c:/Users/农业面源污染分析软件_V1.0_湖北专版.md" --to typst --no-browser --no-watch-inputs
 ```
-* **API文档**：[*🔗接口文档*](https://github.com/Spade-Atek/ANSPAnalytics/blob/main/ANSP_API.md)为md格式
-* **示例数据.zip**：[*提供测试数据*](https://github.com/Spade-Atek/ANSPAnalytics/blob/main/%E7%A4%BA%E4%BE%8B%E6%95%B0%E6%8D%AE.zip)
+* **API文档**：[🔗接口文档](https://github.com/Spade-Atek/ANSPAnalytics/blob/main/ANSP_API.md)为md格式
+* **示例数据.zip**：[提供测试数据](https://github.com/Spade-Atek/ANSPAnalytics/blob/main/%E7%A4%BA%E4%BE%8B%E6%95%B0%E6%8D%AE.zip)
 
 ## 三、软件使用说明
 
@@ -67,8 +67,8 @@ quarto preview "c:/Users/农业面源污染分析软件_V1.0_湖北专版.md" --
 > ✅ 服务端虽然也提供了直接运行的[*Releases*](https://github.com/Spade-Atek/ANSPAnalytics/releases)版本。基于pyinstaller进行打包，但是打包版本存在一个路径问题，下载结果功能无法实现（打包后自己电脑是相对路径可以运行，但是到其他同学的电脑测试是绝对路径导致的错误߹ᯅ߹ ，测试了几天暂时无法解决，但是如果不基于exe可执行文件运行提供的服务，其实所有功能都是可用的）。
 
 因此想体验完整功能，建议采用手动部署的方式部署后端，以实现下载服务。
-1. 下载仓库中的 `ANSP_back` 文件夹（包含templates文件夹，app.py和requirements.txt）
-2. 可根据文件 requirements.txt(包含项目依赖项)创建虚拟环境
+1. 下载仓库中的[`ANSP_back`](https://github.com/Spade-Atek/ANSPAnalytics/tree/main/ANSP_back) 文件夹（包含templates文件夹，app.py和requirements.txt）
+2. 可根据文件requirements.txt(包含项目依赖项)创建虚拟环境
 3. 以 `app.py` 为启动入口运行后端服务：
    ```
    python app.py
@@ -138,7 +138,7 @@ quarto preview "c:/Users/农业面源污染分析软件_V1.0_湖北专版.md" --
 
 ![image](https://github.com/user-attachments/assets/b17e3576-bab6-44fc-9aaa-18f2af89e852)
 
-## 五、农业面源污染相关资料
+## 六、农业面源污染相关资料
 
 ### 🌿 概念说明：
 
